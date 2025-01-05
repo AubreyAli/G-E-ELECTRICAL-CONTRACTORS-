@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin-top: 80px;
+    }
+
+    /* Header Section */
+    header {
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+      width: 60px;
+      border-radius: 50%;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    header h1 span {
+      color: red;
+    }
+
+    .menu-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .menu-icon-top {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0 0 0 30px;
+          position: fixed;
+          right: 30px;
+          top: 45px;
+        }
+        .menu-icon {
+          width: 30px;
+          height: 25px;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .line {
+          width: 100%;
+          height: 5px;
+          background-color: #333333;
+          border-radius: 4px;
+          transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .menu-icon.active .line1 {
+          transform: translateY(3px) rotate(45deg);
+        }
+        .menu-icon.active .line2 {
+          opacity: 0;
+        }
+        .menu-icon.active .line3 {
+          transform: translateY(-17px) rotate(-45deg);
+        }
+
+    /* Sidebar Navigation */
+    nav {
+      position: fixed;
+      top: 80px;
+      right: 0;
+      width: 250px;
+      height: 100%;
+      background-image: linear-gradient(75deg,#42445A,#3A3F79);
+      color: white;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      padding: 20px;
+      box-shadow: -10px 10px 10px rgba(66, 68, 90, 0.6);
+    }
+
+    nav.active {
+      transform: translateX(0);
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 20px 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+    }
+</style>
+<body>
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="G&E Logo">
+    <h1>G&E <span>Electrical Contractors</span></h1>
+    <div class="menu-icon" onclick="toggleSidebar()">
+      <div class="menu-icon" onclick="toggleMenu(this)">
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+      <div class="line line3"></div>
+    </div>
+    
+  </header>
+
+  <!-- Sidebar Navigation -->
+  <nav id="sidebar">
+    <ul>
+      <li><a href="G&E_ELECTRICAL_CONTRACTORS.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+  </nav>
+  <script>
+  // Sidebar Toggle
+  function toggleMenu(icon) {
+    icon.classList.toggle("active")
+  };
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+  }
+
+  // Image Slider
+  const slides = document.querySelectorAll('.slider img');
+  let index = 0;
+
+  function showNextSlide() {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+  }
+
+  setInterval(showNextSlide, 5000);
+</script>
+</body>
+
+</html>
